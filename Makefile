@@ -1,3 +1,6 @@
+run:
+	python aud.py --interval 1800 ../a.mp3
+
 cat:
 	cat Makefile
 
