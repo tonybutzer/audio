@@ -26,7 +26,7 @@ def do_aud(mp3file, interval):
 
     
     for i in range(0,endr):
-        outfile = f'../c{i}.mp3'
+        outfile = f'../d{i:02}.mp3'
         start = i*interval
         do_split(mp3file, outfile, start, interval)
 	
