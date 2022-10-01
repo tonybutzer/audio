@@ -23,22 +23,25 @@ import os
 def mp3towav(mp3, wav):
     cmd = f'ffmpeg -i {mp3} {wav}'
     os.system(cmd)
-    os.unlink(mp3)
+    #os.unlink(mp3)
 
 def wavtowavut(wav, wavut):
-    cmd = f'sox {wav} {wavut} --tempo 1.6'
+    cmd = f'sox {wav} {wavut} tempo 1.6'
+    print(cmd)
     os.system(cmd)
-    os.unlink(wav)
+    #os.unlink(wav)
 
 def wavtomp3(wav, mp3):
     cmd = f'ffmpeg -i {wav} {mp3}'
     os.system(cmd)
-    os.unlink(wav)
+    #os.unlink(wav)
 
 def return_mp3s(directory):
     mp3s=[]
+    extension = '.mp3'
+    # extension = '.wav'
     for file in os.listdir(directory):
-        if file.endswith(".mp3"):
+        if file.endswith(extension):
             mp3file = os.path.join(directory, file)
             mp3s.append(mp3file)
     mp3s.sort()
@@ -48,12 +51,12 @@ def return_mp3s(directory):
 
 def uptempo(mp3file):
     wav = mp3file.replace('.mp3', '.wav')
-    wavut = mp3file.replace('.mp3', '-ut.wav')
+    wavut = wav.replace('.wav', '-ut.wav')
     mp3ut = wavut.replace('.wav', '.mp3')
     print(wav, wavut, mp3ut)
     mp3towav(mp3file, wav)
-    #wavtowavut(wav, wavut)
-    #wavtomp3(wavut, mp3ut)
+    wavtowavut(wav, wavut)
+    wavtomp3(wavut, mp3ut)
 
 
  
