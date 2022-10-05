@@ -23,18 +23,18 @@ import os
 def mp3towav(mp3, wav):
     cmd = f'ffmpeg -i {mp3} {wav}'
     os.system(cmd)
-    #os.unlink(mp3)
+    os.unlink(mp3)
 
 def wavtowavut(wav, wavut):
     cmd = f'sox {wav} {wavut} tempo 1.6'
     print(cmd)
     os.system(cmd)
-    #os.unlink(wav)
+    os.unlink(wav)
 
 def wavtomp3(wav, mp3):
     cmd = f'ffmpeg -i {wav} {mp3}'
     os.system(cmd)
-    #os.unlink(wav)
+    os.unlink(wav)
 
 def return_mp3s(directory):
     mp3s=[]
